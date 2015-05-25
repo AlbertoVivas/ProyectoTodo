@@ -1,6 +1,6 @@
 //package org.microforum.cursojava;
 package xml;
-import java.util.HashMap;
+
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -25,7 +25,8 @@ public class LibroXML extends DefaultHandler{
 	      valor=null;  
 	        
 	      // Si la etiqueta es libro leemos el atributo isbn  
-	      if(localName.equals("libro")){  
+	      if(localName.equals("libro")){
+	    	 libro = new Libro();
 	         String isbn = attributes.getValue("isbn");  
 	         // Lo guardamos en el objeto libro  
 	         libro.setIsbn(isbn);  

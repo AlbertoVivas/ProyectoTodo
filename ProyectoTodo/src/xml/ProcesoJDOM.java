@@ -40,7 +40,8 @@ public class ProcesoJDOM {
 				System.out.println("Valor =" + detalle.getValue());
 
 			}
-
+			
+			
 			
 		}
 		
@@ -49,7 +50,30 @@ public class ProcesoJDOM {
 	    // Creamos una nueva etiqueta  
 	    Element nuevolibro = new Element("libro");  
 	    // Añadimos un atributo  
-	    nuevolibro.setAttribute("isbn", "xxxx-yyyy");  
+	    nuevolibro.setAttribute("isbn", "9788496208568");
+	    
+	    Element titulo = new Element("isbn");
+	    titulo.addContent("CANCION DE HIELO Y FUEGO");
+	    
+	    Element anyo = new Element("anyo");
+	    anyo.addContent("2007");
+	    
+	    Element isbn = new Element("isbn");
+	    isbn.addContent("9788496208568");
+	    
+	    Element autor = new Element("autor");
+	    autor.addContent("HRR Martin");
+	    
+	    Element editorial = new Element("editorial");
+	    editorial.addContent("GIGAMESH");
+	    
+	    nuevolibro.addContent(titulo);
+	    nuevolibro.addContent(autor);
+	    nuevolibro.addContent(anyo);
+	    nuevolibro.addContent(editorial);
+	    
+	    
+	    
 	    padre.addContent(nuevolibro);  
 
 	    

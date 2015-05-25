@@ -2,6 +2,7 @@
 package xml;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Iterator;
 
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -26,8 +27,14 @@ public class ProcesoSAX {
 	         //reader.parse(new InputSource(new FileInputStream("libro.xml")));  
 	         reader.parse(new InputSource(new FileInputStream("libros.xml")));
 	         
-	         //System.out.println(libro.toString());
+	         //System.out.println(libro.toString());    
 	         System.out.println(libroxml.hmsl);
+	         
+	        /* Iterator i =libroxml.hmsl.entrySet().iterator();
+	         while(i.hasNext()){
+	        	 System.out.println(i.next());
+	         }*/
+	         
 	      } catch (SAXException e) {  
 	         e.printStackTrace();  
 	      } catch (IOException e) {  

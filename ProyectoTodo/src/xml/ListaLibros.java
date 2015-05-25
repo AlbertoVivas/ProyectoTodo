@@ -27,7 +27,7 @@ public class ListaLibros{
 
 		ListaLibros ll = new ListaLibros();
 		
-		Libro l1 = new Libro("9788496208568", "CANCION DE HIELO Y FUEGO", "JRR Martin", "2007", "GIGAMESH");
+		Libro l1 = new Libro("9788496208568", "CANCION DE HIELO Y FUEGO", "HRR Martin", "2007", "GIGAMESH");
 		Libro l2 = new Libro("9788445071793", "EL SEÑOR DE LOS ANILLOS", "J.R.R. TOLKIEN", "2002", "MINOTAURO");
 		Libro l3 = new Libro("9788427201187", "DIVERGENTE", "VERONICA ROTH", "2011", "MOLINO");
 		
