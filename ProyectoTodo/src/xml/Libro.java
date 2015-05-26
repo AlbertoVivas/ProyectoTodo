@@ -3,7 +3,7 @@ package xml;
 
 
 
-public class Libro {
+public class Libro implements Comparable<Libro>{
 	   private String isbn = null;  
 	   private String titulo = null;  
 	   private String autor = null;  
@@ -76,7 +76,15 @@ public class Libro {
 	      sb.append("\nEditorial: "+editorial);  
 	        
 	      return sb.toString();  
-	   }  
+	   }
+	/* (non-Javadoc)
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 */
+	@Override
+	public int compareTo(Libro arg0) {
+		// TODO Auto-generated method stub
+		return this.titulo.compareTo(arg0.getTitulo());
+	}  
 	     
 	     
 	  
