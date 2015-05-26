@@ -128,16 +128,15 @@ public class PracticaJDOM {
 		}
 
 		// Añado el nuevo nodo que undica el total de libros.
-		Element numLibros = new Element("total");
-		numLibros.addContent("" + n_libros);
-		rootElement.addContent(numLibros);
+		//Element numLibros = new Element("total");
+		//numLibros.addContent("" + n_libros);
+		//rootElement.addContent(numLibros);
+		
+		//De esta manera incluyo el total de libros como un atributo de libros
+		rootElement.setAttribute("total",""+n_libros);
 
 		return respuesta;
 	}
-	
-	
-	
-	
 	
 	
 	
