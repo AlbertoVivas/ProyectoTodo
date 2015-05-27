@@ -17,6 +17,8 @@ import java.util.List;
 public class MainHilos {
 
 	public static void main(String[] args) {
+		long t0 = System.currentTimeMillis();
+		System.out.println(t0+"----------------t0");
 		Hilos h1 = new Hilos("Conejo");
 		Hilos h2 = new Hilos("Tortuga");
 		Hilos h3 = new Hilos("Zorro");
@@ -52,5 +54,8 @@ public class MainHilos {
 		System.out.println(list2.toString());
 */
 		
+		//System.out.println("t1");
+		//long t1 = System.currentTimeMillis();
+		//System.out.println(t1-t0);
 	}
 }

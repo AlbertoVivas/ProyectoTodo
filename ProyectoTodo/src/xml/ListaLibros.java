@@ -20,6 +20,10 @@ public class ListaLibros{
 	private HMlibroToString hm_libro = new HMlibroToString();
 	
 	/**
+	 * Lista de libros sin argumentos
+	 * 
+	 * se agregan 3 libros al objeto losta libros y uso el metodo toString
+	 * para mostrar los libros.
 	 * @param args
 	 */
 	public static void main(String[] args) {

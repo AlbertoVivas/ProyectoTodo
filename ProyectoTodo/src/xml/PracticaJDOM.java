@@ -162,10 +162,15 @@ public class PracticaJDOM {
 	
 	
 	/**
+	 * main con los 5 metodos generales
 	 * @param args
-	 * @throws IOException 
-	 * @throws JDOMException 
-	 * @throws FileNotFoundException 
+	 * argumentos de entrada
+	 * @throws IOException
+	 *  excepcion imput output
+	 * @throws JDOMException
+	 *  excepcion jdom
+	 * @throws FileNotFoundException
+	 *  excepcion si no consigue el archivo
 	 */
 	public static void main(String[] args) throws FileNotFoundException, JDOMException, IOException {
 		// TODO Auto-generated method stub

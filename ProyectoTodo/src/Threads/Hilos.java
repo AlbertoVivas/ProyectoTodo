@@ -11,10 +11,14 @@ package Threads;
 //package val.examples.threads;
 
 public class Hilos extends Thread {
+	public long t;
     public Hilos(String str) {
         super(str);
     }
-    public void run() {
+    public long getT(){
+    	return this.t;
+    }
+    public void run(){
         for (int i = 0; i < 10; i++) {
             System.out.println("Km " + i + " : " + getName());
             try {
@@ -22,5 +26,8 @@ public class Hilos extends Thread {
             } catch (InterruptedException e) {}
         }
         System.out.println("Llego a la meta! " + getName());
+        this.t=System.currentTimeMillis();
+        System.out.println(t+"------------"+getName());
+   
     }
 }
