@@ -169,6 +169,11 @@ public class TestListaPersona {
 		assertArrayEquals("test eliminar persona p3", ap, lp.getListaPersonas());
 	}
 
-
+	@Test
+	public void testEsmayorPersona(){
+		//Persona p = new Persona("tete", 2);
+		assertThat(lp.buscarPersona("Alb"), new EsPersonaMayorDeEdad());
+		//assertThat(p, new EsPersonaMayorDeEdad());
+	}
 
 }
