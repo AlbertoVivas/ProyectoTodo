@@ -66,8 +66,7 @@ public class piramide {
 	
 	
 	public static void main(String[] args) {
-		haz_piramide(10);
-		haz_piramide2punto0(10);
-		
+		//haz_piramide(10);
+		haz_piramide2punto0(110);
 	}
 }
