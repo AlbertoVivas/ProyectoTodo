@@ -6,6 +6,7 @@ package jdbc_DAO_DTO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Savepoint;
 import java.sql.Statement;
 
 /**
@@ -28,8 +29,16 @@ public class Conexion {
 		Connection conn = null;
 		Statement stmt = null;
 		Class.forName(driver);
+		Savepoint sp = null;
+		try{	
 		conn = DriverManager.getConnection(conexion, user, password);
+		conn.setAutoCommit(false);
+		sp = conn.setSavepoint();
 		stmt = conn.createStatement();
+		conn.commit();
+		}catch(Throwable t){
+			conn.rollback(sp);
+		}
 		return stmt;
 	}
 	public static void LiberarRecursos(){
