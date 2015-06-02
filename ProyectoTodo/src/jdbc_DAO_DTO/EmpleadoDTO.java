@@ -1,16 +1,16 @@
 /**
  * 
  */
-package jdbc;
+package jdbc_DAO_DTO;
 
-import java.util.ArrayList;
+import jdbc.Empleado;
 
 /**
  * @author Alberto Vivas
  *
  * 
  */
-public class Empleado implements Comparable<Empleado>{
+public class EmpleadoDTO implements Comparable<Empleado>{
 	private String employee_id;
 	private String first_name;
 	private String last_name;
@@ -24,7 +24,7 @@ public class Empleado implements Comparable<Empleado>{
 	private String department_id;
 	
 	
-	public Empleado(String employee_id, String first_name, String last_name,
+	public EmpleadoDTO(String employee_id, String first_name, String last_name,
 			String email, String phone_number, String hire_date, String job_id,
 			int salary, String commision_pct, String mannager_id,
 			String department_id) {
@@ -182,8 +182,4 @@ public class Empleado implements Comparable<Empleado>{
 	public void setDepartment_id(String department_id) {
 		this.department_id = department_id;
 	}
-
-
-	
-	
 }
