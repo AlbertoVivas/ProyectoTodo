@@ -15,26 +15,26 @@ import java.sql.Statement;
  */
 public class Conexion {
 	
-	private String driver;
-	private String conexion;
-	private String user;
-	private String password;
 	
+	private static Connection conn = null;
+	private static Statement stmt = null;
 	
-	public Conexion(String driver, String conexion, String user, String password) {
-		this.driver = driver;
-		this.conexion = conexion;
-		this.user = user;
-		this.password = password;
-	}
+	private static final String driver = "oracle.jdbc.driver.OracleDriver";
+	private static final String conexion = "jdbc:oracle:thin:@localhost:1521:xe";
+	private static final String user = "HR";
+	private static final String password = "a123456";
 	
-	public Statement conectarBBDD() throws SQLException, ClassNotFoundException {
+	public static Statement conectarBBDD() throws SQLException, ClassNotFoundException {
 		Connection conn = null;
 		Statement stmt = null;
-		Class.forName(this.driver);
-		conn = DriverManager.getConnection(this.conexion, this.user, this.password);
+		Class.forName(driver);
+		conn = DriverManager.getConnection(conexion, user, password);
 		stmt = conn.createStatement();
 		return stmt;
+	}
+	public static void LiberarRecursos(){
+		if (stmt != null)	{ try {	stmt.close(); } catch (Exception e2) { e2.printStackTrace(); }}
+		if (conn != null) 	{ try { conn.close(); } catch (Exception e3) { e3.printStackTrace(); }}
 	}
 
 	
