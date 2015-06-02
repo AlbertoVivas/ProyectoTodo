@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * 
  */
-public class Empleado {
+public class Empleado implements Comparable<Empleado>{
 	//private ArrayList<Empleado> listaEmpleado;
 	private String employee_id;
 	private String first_name;
@@ -41,7 +41,24 @@ public class Empleado {
 		this.mannager_id = mannager_id;
 		this.department_id = department_id;
 	}
-
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.first_name+" "+this.last_name+" "+this.salary;
+	}
+	
+	/**
+	 * 
+	 */
+	@Override
+	public int compareTo(Empleado e) {
+		// TODO Auto-generated method stub
+		return e.getSalary()-this.getSalary();
+	}
 
 	public String getEmployee_id() {
 		return employee_id;
