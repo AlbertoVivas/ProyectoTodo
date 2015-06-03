@@ -134,7 +134,7 @@ public class Practica1 {
 			muestraBdEnPantalla(classname, conexion, user, pass, conn, "JOBS");
 			
 			System.out.println("----------------");
-			muestraBdEnPantalla(classname, conexion, user, pass, conn, "DEPARTMENTS");
+			muestraBdEnPantalla(classname, conexion, user, pass, conn, "REGIONS");
 			
 			
 		}

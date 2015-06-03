@@ -1,7 +1,7 @@
 /**
  * 
  */
-package jdbc_DAO_DTO;
+package evaluacion.primera;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -25,7 +25,12 @@ public class Conexion {
 	public static Conexion getInstance(){				// |--- Singleton
 		return o_conexion;}								// /
 	
-	
+	public static Connection obtenerConexion() throws SQLException, ClassNotFoundException{
+		Connection conn;
+		Class.forName(driver);
+		conn = DriverManager.getConnection(conexion, user, password);
+		return conn;
+	}
 														
 	
 	private static final String driver = "oracle.jdbc.driver.OracleDriver";
