@@ -20,14 +20,18 @@ public class Conexion {
 	private static Connection conn = null;
 	private static Statement stmt = null;
 	
+	private static Conexion o_conexion = new Conexion();// \
+	private Conexion(){}								// |--- Pattern
+	public static Conexion getInstance(){				// |--- Singleton
+		return o_conexion;}								// /
+														
+	
 	private static final String driver = "oracle.jdbc.driver.OracleDriver";
 	private static final String conexion = "jdbc:oracle:thin:@localhost:1521:xe";
 	private static final String user = "HR";
 	private static final String password = "a123456";
 	
 	public static Statement conectarBBDD() throws SQLException, ClassNotFoundException {
-		Connection conn = null;
-		Statement stmt = null;
 		Class.forName(driver);
 		Savepoint sp = null;
 		try{	
