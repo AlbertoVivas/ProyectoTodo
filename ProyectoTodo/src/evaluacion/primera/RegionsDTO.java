@@ -65,7 +65,14 @@ public class RegionsDTO implements Comparable<RegionsDTO>{
 		this.region_name = region_name;
 	}
 
-	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object arg0) {
+		RegionsDTO rdto = (RegionsDTO)arg0;
+		return this.region_name.equals(rdto.getRegion_name())&& this.region_id== rdto.getRegion_id();
+	}
 	
 	
 	

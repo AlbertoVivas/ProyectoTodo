@@ -101,8 +101,8 @@ public class RegionsDAO {
 	 * @throws ClassNotFoundException 
 	 */
 	
-	public void insertarRegion(RegionsDTO rdto) throws ClassNotFoundException, SQLException{
-		
+	public boolean insertarRegion(RegionsDTO rdto) throws ClassNotFoundException, SQLException{
+		boolean respuesta = false;
 		if(recuperarRegion(rdto.getRegion_id())== null){ //nos aseguramos de que la region no exista.
 		
 			try {
@@ -113,6 +113,7 @@ public class RegionsDAO {
 				ps.setString(2, rdto.getRegion_name());
 
 				ps.execute();
+				respuesta = true;
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally // libero los recursos
@@ -124,13 +125,14 @@ public class RegionsDAO {
 						e2.printStackTrace();
 					}
 				}
+				
 				Conexion.LiberarRecursos();
 
 			}
 		}else{
 			System.out.println("Ya existe el identificador de region: "+rdto.getRegion_id());
 		}
-		
+		return respuesta;
 	}
 	
 }
