@@ -4,6 +4,7 @@
 package evaluacion.primera;
 
 /**
+ *This class wrap, all sql instructions used by others methods
  * @author Alberto Vivas
  *
  * 

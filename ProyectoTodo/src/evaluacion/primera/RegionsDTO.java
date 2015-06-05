@@ -4,6 +4,8 @@
 package evaluacion.primera;
 
 /**
+ * DTO = Data Type Object
+ * this class is part of the dao - dto methodology
  * @author Alberto Vivas
  *
  * 

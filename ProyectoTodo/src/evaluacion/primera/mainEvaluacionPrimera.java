@@ -11,7 +11,7 @@ import java.util.Iterator;
 /**
  * @author Alberto Vivas
  *
- *Clase main de prueba de mi lectura de bd de oracle 
+ *Main test class of the methods of my java code
  */
 public class mainEvaluacionPrimera {
 	public static void mostrarLista(ArrayList<RegionsDTO> ale){
@@ -34,6 +34,7 @@ public class mainEvaluacionPrimera {
 		ale=rdto.recuperarRegion(1);
 		mostrarLista(ale);
 		//crear una nueva region en la bd
+		System.out.println("\ncrear una nueva region en la bd \n");
 		RegionsDTO newreg = new RegionsDTO(6, "Matrix");
 		rdto.insertarRegion(newreg);
 		ale=rdto.recuperarTodos();

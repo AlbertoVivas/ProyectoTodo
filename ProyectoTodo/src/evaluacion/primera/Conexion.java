@@ -10,6 +10,9 @@ import java.sql.Savepoint;
 import java.sql.Statement;
 
 /**
+ * In this class is condensed all connections needed to access the data base
+ * the singleton pattern is used, and we ensure to free connections after use.
+ * 
  * @author Alberto Vivas
  *
  * 
