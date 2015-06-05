@@ -5,6 +5,8 @@ package evaluacion.primera;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Savepoint;
 import java.sql.Statement;
@@ -19,9 +21,10 @@ import java.sql.Statement;
  */
 public class Conexion {
 	
-	
-	private static Connection conn = null;
-	private static Statement stmt = null;
+	private static final String driver = "oracle.jdbc.driver.OracleDriver";
+	private static final String conexion = "jdbc:oracle:thin:@localhost:1521:xe";
+	private static final String user = "HR";
+	private static final String password = "a123456";
 	
 	private static Conexion o_conexion = new Conexion();// \
 	private Conexion(){}								// |--- Pattern
@@ -35,30 +38,18 @@ public class Conexion {
 		return conn;
 	}
 														
-	
-	private static final String driver = "oracle.jdbc.driver.OracleDriver";
-	private static final String conexion = "jdbc:oracle:thin:@localhost:1521:xe";
-	private static final String user = "HR";
-	private static final String password = "a123456";
-	
-	public static Statement conectarBBDD() throws SQLException, ClassNotFoundException {
-		Class.forName(driver);
-		Savepoint sp = null;
-		try{	
-		conn = DriverManager.getConnection(conexion, user, password);
-		conn.setAutoCommit(false);			// \
-		sp = conn.setSavepoint();			//  |--- Transaction
-		stmt = conn.createStatement();		//  |
-		conn.commit();						// /
-		}catch(Throwable t){
-			conn.rollback(sp);
-		}
-		return stmt;
-	}
-	public static void LiberarRecursos(){
+	public static void LiberarRecursos(Statement stmt,Connection conn,ResultSet rset){
 		if (stmt != null)	{ try {	stmt.close(); } catch (Exception e2) { e2.printStackTrace(); }}
 		if (conn != null) 	{ try { conn.close(); } catch (Exception e3) { e3.printStackTrace(); }}
+		if (rset != null)   { try { rset.close(); } catch (Exception e2) { e2.printStackTrace(); }}
 	}
-
+	/**
+	 * @param newconex
+	 */
+	public static void LiberarRecursos(Connection conn, PreparedStatement pstmt) {
+		if (conn != null) 	{ try { conn.close(); } catch (Exception e3) { e3.printStackTrace(); }}
+		if (pstmt != null)	{ try {	pstmt.close(); } catch (Exception e2) { e2.printStackTrace(); }}
+		
+	}
 	
 }

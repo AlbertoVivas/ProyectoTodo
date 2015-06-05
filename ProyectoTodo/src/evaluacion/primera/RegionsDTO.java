@@ -23,9 +23,7 @@ public class RegionsDTO implements Comparable<RegionsDTO>{
 	
 	
 	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
+	
 	@Override
 	public String toString() {
 		String respuesta="";
@@ -65,9 +63,7 @@ public class RegionsDTO implements Comparable<RegionsDTO>{
 		this.region_name = region_name;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
+	
 	@Override
 	public boolean equals(Object arg0) {
 		RegionsDTO rdto = (RegionsDTO)arg0;

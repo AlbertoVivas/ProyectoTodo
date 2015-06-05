@@ -4,10 +4,7 @@
 package evaluacion.primera;
 
 import static org.junit.Assert.*;
-
 import java.sql.SQLException;
-import java.util.ArrayList;
-
 import org.junit.Test;
 
 /**
@@ -38,9 +35,7 @@ public class TestRegionDAO {
 	public void testRecuperarRegion() throws ClassNotFoundException, SQLException {
 		RegionsDAO rdao = new RegionsDAO();
 		RegionsDTO rdto = new RegionsDTO(1,"Europe");
-		ArrayList<RegionsDTO> alrdto = new ArrayList<RegionsDTO>();
-		alrdto.add(rdto);
-		assertEquals(alrdto, rdao.recuperarRegion(1));
+		assertEquals(rdto, rdao.recuperarRegion(1));
 	}
 
 	/**
