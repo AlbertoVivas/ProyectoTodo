@@ -20,8 +20,6 @@ import evaluacion.primera.InstruccionesSQL;
  * DAO = Data Access Object
  * this class is part of the dao - dto methodology
  * @author Alberto Vivas
- *
- * 
  */
 public class RegionsDAO {
 	private final static Logger log = Logger.getLogger("mylog");
@@ -82,7 +80,7 @@ public class RegionsDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			log.error("error al recuperar la region "+id_region);
+			log.error("Error al recuperar la region "+id_region);
 		} finally // libero los recursos
 		{
 			Conexion.LiberarRecursos(stmt,newconex,rset);
@@ -108,8 +106,8 @@ public class RegionsDAO {
 		
 			try {
 				newconex = Conexion.obtenerConexion();
-				sp= newconex.setSavepoint();
 				newconex.setAutoCommit(false);
+				sp= newconex.setSavepoint();
 				ps = newconex.prepareStatement(InstruccionesSQL.insertarRegion());
 				ps.setInt(1, rdto.getRegion_id());
 				ps.setString(2, rdto.getRegion_name());
@@ -117,8 +115,10 @@ public class RegionsDAO {
 				newconex.commit();
 				respuesta = true;
 			} catch (Exception e) {
-				newconex.rollback(sp);
 				e.printStackTrace();
+				newconex.rollback(sp);
+				
+				log.error("Ha ocurrido un error en el TRY CATCH al insertar la region: "+rdto);
 			} finally // libero los recursos
 			{
 				Conexion.LiberarRecursos(newconex, ps);
@@ -135,21 +135,23 @@ public class RegionsDAO {
 		Connection newconex =null;
 		PreparedStatement ps = null;
 		Savepoint sp = null;
-		if(recuperarRegion(rdto.getRegion_id()).equals(rdto)){ //nos aseguramos de que la region no exista.
-		
+		if(recuperarRegion(rdto.getRegion_id()).equals(rdto)){ //nos aseguramos de que la region exista.
+			
 			try {
 				newconex = Conexion.obtenerConexion();
-				sp= newconex.setSavepoint();
 				newconex.setAutoCommit(false);
+				sp= newconex.setSavepoint();
+				
 				ps = newconex.prepareStatement(InstruccionesSQL.modificarRegion());
 				ps.setString(1, n_rdto.getRegion_name());
-				ps.setInt(2, n_rdto.getRegion_id());
+				ps.setString(2, rdto.getRegion_name());
 				ps.execute();
 				newconex.commit();
 				respuesta = true;
 			} catch (Exception e) {
 				newconex.rollback(sp);
 				e.printStackTrace();
+				log.error("Ha ocurrido un error el el TRY CATCH al modificar la region: "+rdto+" por "+n_rdto);
 			} finally // libero los recursos
 			{
 				Conexion.LiberarRecursos(newconex, ps);
@@ -166,12 +168,12 @@ public class RegionsDAO {
 		Connection newconex =null;
 		PreparedStatement ps = null;
 		Savepoint sp = null;
-		if(recuperarRegion(rdto.getRegion_id()).equals(rdto)){ //nos aseguramos de que la region no exista.
 		
+		if(recuperarRegion(rdto.getRegion_id()).equals(rdto)){ //nos aseguramos de que la region exista.
 			try {
 				newconex = Conexion.obtenerConexion();
-				sp= newconex.setSavepoint();
-				newconex.setAutoCommit(false);
+				newconex.setAutoCommit(false);// desactivamos el autocommit (hacer que los cambios se hagan reales en la bd sin mi orden)
+				sp= newconex.setSavepoint(); // Hacemos un savepoint
 				ps = newconex.prepareStatement(InstruccionesSQL.modificarRegion());
 				ps.setInt(1, rdto.getRegion_id());
 				ps.setString(2, rdto.getRegion_name());
@@ -181,6 +183,7 @@ public class RegionsDAO {
 			} catch (Exception e) {
 				newconex.rollback(sp);
 				e.printStackTrace();
+				log.error("Ha ocurrido un error en el TRY CATCH al borrar la region: "+rdto);
 			} finally // libero los recursos
 			{
 				Conexion.LiberarRecursos(newconex, ps);

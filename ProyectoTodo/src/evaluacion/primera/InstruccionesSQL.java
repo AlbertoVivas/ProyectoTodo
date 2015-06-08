@@ -26,7 +26,7 @@ public class InstruccionesSQL {
 		return "INSERT INTO REGIONS (region_id,region_name) VALUES (?,?)";
 	}
 	public static String modificarRegion(){
-		return "UPDATE REGIONS SET region_name=? WHERE region_id=?";
+		return "UPDATE REGIONS SET region_name=? WHERE region_name=?";
 	}
 	public static String borrarRegion(){
 		return "DELETE FROM REGIONS WHERE region_id=? AND region_name=?";

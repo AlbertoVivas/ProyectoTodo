@@ -59,6 +59,7 @@ public class MainIber
     	
     	//Ahora ya con sesion, obtengo y manejo conexiones que me va dando SessionFactory
     	Session session = factory.openSession();
+    	//Session session = factory.getCurrentSession(); // este suele usarse mas para no crear multiples sesiones y cerrarlas sino usar una unica
     	
     	//Me creo el POJO
     	Region region = new Region();
@@ -84,7 +85,7 @@ public class MainIber
     	{
     		transaction = session.beginTransaction();
     		@SuppressWarnings("unchecked")
-			List<Region> list = session.createSQLQuery("SELECT * FROM REGIONS").addEntity(Region.class).list();
+			List<Region> list = session.createSQLQuery("SELECT * FROM REGIONS").addEntity(Region.class).list();//entity es el objeto java asociada a la base de datos
     		Iterator<Region> it = list.iterator();
     		Region rg;
     		while (it.hasNext())
@@ -101,8 +102,11 @@ public class MainIber
     	}
     	finally 
     	{
-    		session.close();//haya ido bien o mal, libero recursos!
-    		factory.close();
+    		session.disconnect();// con disconect digo "ya no uso la conexion y dejala libre para otro uso".
+    		//Al hacer close elimino la conexcion, y no puedo utilizarla nuevamente
+    		//session.close();//haya ido bien o mal, libero recursos!
+    		//factory.close(); //el factory se ejecuta una unica vez 
+    		
     	}
     	
     }

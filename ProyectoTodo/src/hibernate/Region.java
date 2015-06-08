@@ -32,7 +32,7 @@ public class Region {
 	
 	@Override
 	public String toString() {
-		return (this.region_id + this.region_name);
+		return (this.region_id + " " + this.region_name);
 	}
 	
 	
